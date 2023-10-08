@@ -1,0 +1,193 @@
+{% extends 'app/base.html' %}
+{% block title %}Become An Instructor{% endblock %}
+{% block content %}
+{% load static %}
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Become An Instructor</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Become An Instructor
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- Img -->
+        <img class="d-none img-fluid" src="...html" alt="...">
+    </header>
+
+
+    <!-- BECOME AN INSTRUCTOR
+    ================================================== -->
+    <div class="container mb-11">
+        <div class="text-center mb-5">
+            <h1 class="mb-1">Apply As Instructor</h1>
+            <p class="">Discover your perfect program in our courses.</p>
+        </div>
+        <p class="w-xl-80 mx-xl-auto text-center line-height-md mb-6">Convallis vitae, nunc ut venenatis, lectus. Tellus nunc orci dolor nec facilisis et lacus, eu aliquet. Amet imperdiet ac venenatis, lacus. Tortor interdum quisque et, eu etiam ac. Hac lectus at posuere est consequat euismod tellus ut. Dolor ut diam sed dignissim eget gravida. Lectus mattis hac vitae, sed quis vel ornare sed. Ut vel cursus sed id eu. Laoreet bibendum eget dui sapien bibendum sapien. </p>
+        <div class="py-12 py-md-14 bg-cover rounded text-center" style="background-image: url({% static 'assets/img/covers/cover-1.jpg' %});""></div>
+        <!-- <img class="rounded img-fluid mb-6" src="assets/img/covers/cover-1.jpg" alt="..."> -->
+
+        <!-- COURSE INFO TAB
+        ================================================== -->
+        <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 mb-8 pt-1 justify-content-center" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview" role="tab" aria-controls="pills-overview" aria-selected="true">Become an Intructor</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-curriculum-tab" data-bs-toggle="pill" href="#pills-curriculum" role="tab" aria-controls="pills-curriculum" aria-selected="false">Intructor Rules</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-instructor-tab" data-bs-toggle="pill" href="#pills-instructor" role="tab" aria-controls="pills-instructor" aria-selected="false">Start with courses</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-overview" role="tabpanel" aria-labelledby="pills-overview-tab">
+                <div class="w-xl-80 mx-auto mb-8">
+                    <h3 class="">Become</h3>
+                    <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to start? This course will allow you to develop your user interface design skills and you can add UI designer to your CV and start getting clients for your skills.</p>
+                    <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I will help you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool for User Interface design. It's used by everyone from entrepreneurs and start-ups to Apple, Airbnb, Facebook, etc.</p>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-curriculum" role="tabpanel" aria-labelledby="pills-curriculum-tab">
+                <div class="w-xl-80 mx-auto mb-8">
+                    <h3 class="">Rules</h3>
+                    <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to start? This course will allow you to develop your user interface design skills and you can add UI designer to your CV and start getting clients for your skills.</p>
+                    <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I will help you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool for User Interface design. It's used by everyone from entrepreneurs and start-ups to Apple, Airbnb, Facebook, etc.</p>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-instructor" role="tabpanel" aria-labelledby="pills-instructor-tab">
+                <div class="w-xl-80 mx-auto mb-8">
+                    <h3 class="">Start with courses</h3>
+                    <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to start? This course will allow you to develop your user interface design skills and you can add UI designer to your CV and start getting clients for your skills.</p>
+                    <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I will help you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool for User Interface design. It's used by everyone from entrepreneurs and start-ups to Apple, Airbnb, Facebook, etc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COUNTUP
+    ================================================== -->
+    <div class="py-5 py-md-12 jarallax overlay overlay-primary overlay-70" data-jarallax data-speed=".8" style="background-image: url(assets/img/covers/cover-24.jpg)">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h2 class="text-uppercase text-white">Register Now And Get A 50% Discount</h2>
+                    <p class="text-orange text-capitalize font-size-lg mb-4">Get 100 Online Courses for Free</p>
+                    <div class="row text-center mx-md-n1 mx-lg-n5 countdown" data-countdown="10/01/2022 12:00:00 PM">
+                        <div class="col-6 col-md-auto px-md-1 px-lg-5 mb-6 mb-md-0 countdown-days">
+                            <div class="mb-4 mx-auto border-white border-w-md border rounded-circle h-90p w-90p d-flex align-items-center justify-content-center flex-column">
+                                <div class="h2 text-white mb-0"><span class="countdown-value">0</span></div>
+                            </div>
+                            <span class="h4 fw-medium text-white mb-0 countdown-label">DAYS</span>
+                        </div>
+
+                        <div class="col-6 col-md-auto px-md-1 px-lg-5 mb-6 mb-md-0 countdown-hours">
+                            <div class="mb-4 mx-auto border-white border-w-md border rounded-circle h-90p w-90p d-flex align-items-center justify-content-center flex-column">
+                                <div class="h2 text-white mb-0"><span class="countdown-value">0</span></div>
+                            </div>
+                            <span class="h4 fw-medium text-white mb-0 countdown-label">HOURS</span>
+                        </div>
+
+                        <div class="col-6 col-md-auto px-md-1 px-lg-5 mb-6 mb-md-0 countdown-minutes">
+                            <div class="mb-4 mx-auto border-white border-w-md border rounded-circle h-90p w-90p d-flex align-items-center justify-content-center flex-column">
+                                <div class="h2 text-white mb-0"><span class="countdown-value">0</span></div>
+                            </div>
+                            <span class="h4 fw-medium text-white mb-0 countdown-label">MINUTES</span>
+                        </div>
+
+                        <div class="col-6 col-md-auto px-md-1 px-lg-5 mb-6 mb-md-0 countdown-seconds">
+                            <div class="mb-4 mx-auto border-white border-w-md border rounded-circle h-90p w-90p d-flex align-items-center justify-content-center flex-column">
+                                <div class="h2 text-white mb-0"><span class="countdown-value">0</span></div>
+                            </div>
+                            <span class="h4 fw-medium text-white mb-0 countdown-label">SECONDS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="text-center">
+                        <p class="text-orange text-capitalize font-size-lg mb-3">Create free account to get</p>
+                        <h3 class="text-uppercase text-white mb-6">The Complete Web Developer Course</h3>
+                    </div>
+
+                    <div class="bg-white p-5 p-lg-7 rounded-lg">
+                        <form class="mb-5" method="post" action="{% url candyLink.instructor_register %}">
+                            {% csrf_token %}
+                            <!-- Username -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    Username
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupUsername1" placeholder="John" name="username" required>
+                            </div>
+        
+                            <!-- Email -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupEmail1">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" id="modalSignupEmail1" placeholder="johndoe@creativelayers.com" name="email" required>
+                            </div>
+        
+                            <!-- Password -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password1" required>
+                            </div>
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Re-Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password2" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label value="#563d7c" for="formFile" class="form-label">Upload your CV here</label>
+                                <input class="form-control" type="file" id="formFile" name="CV" required>
+                              </div>
+                            <br/>
+
+                            
+                            <!-- <div class="form-check">
+                                <input name="role" value="learner" class="form-check-input" type="radio" name="flexRadioDefault" id="learner">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    I'm a learner
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input name="role"  value="instructor" class="form-check-input" type="radio" name="flexRadioDefault" id="instructor" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    I'm an instructor
+                                </label>
+                              </div> -->
+        
+                            <!-- Submit -->
+                            <button class="btn btn-block btn-primary" type="submit">
+                                SIGN UP
+                            </button>
+        
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Mirrored from transvelo.github.io/skola-html/5.1/become-instructor.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Jan 2022 12:13:15 GMT -->
+
+{% endblock %}

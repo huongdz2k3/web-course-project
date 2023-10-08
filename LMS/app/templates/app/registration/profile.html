@@ -1,0 +1,107 @@
+{% extends 'app/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Profile Update</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Profile Update
+                    </li>
+                </ol>
+            </nav>
+            {% include "app/components/msg.html" %}
+        </div>
+        <!-- Img -->
+        <img class="d-none img-fluid" src="...html" alt="...">
+    </header>
+
+    <!-- Card -->
+            <div class="card" style="width:80%;margin-left:10%;">
+                <br>
+              <div class="card-body" >
+             
+                <form method="post" action="{% url 'profile_update' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="row">
+                        <div class="col">
+                            <div class="form-group mb-4">
+                              <label style="color: #2f2d51"><b>First Name</b></label>
+                             <input style="color: black" type="text" class="form-control"  placeholder="Enter First Name" name="first_name" value="{{user.first_name}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                              <label style="color: #2f2d51"><b>Last Name</b></label>
+                              <input style="color: black" type="text" class="form-control" placeholder="Enter Last Name" name="last_name" value="{{user.last_name}}">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                             <div class="form-group mb-4">
+                                <label style="color: #2f2d51"><b>Email address</b></label>
+                                <input disabled style="background-color: #d1d1d1" type="email" class="form-control" placeholder="Enter Email" name="email" value="{{user.email}}">
+                             </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                               <label style="color: #2f2d51"><b>Username</b></label>
+                               <input style="color: black" type="text" class="form-control" placeholder="Enter Username" name="username" value="{{user.username}}">
+                            </div>
+                        </div>
+                  </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group mb-4">
+                                <label style="color: #2f2d51"><b>Avatar </b></label>
+                                <input style="color: black" type="file" class="form-control" name="avatar" accept="image/*" id="avatarInput" value="{{current_avatar}}">
+<!--                                <p style="float: left;">Download your current avatar <a href="{% url 'download_avatar' user_id %}" download><b>here</b> </a></p>-->
+                                <p style="float: left;">Download your current avatar <a href="{{learner.avatar.url}}"><b>here</b> </a></p>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                                <label style="color: #2f2d51"><b>Preview Avatar</b></label>
+                                <img src="#" alt="Preview" id="avatarPreview" style="display: none; max-width: 200px; max-height: 200px;">
+                            </div>
+                        </div>
+                    </div>
+                  <button type="submit" class="btn btn-primary">Update Profile </button>
+                </form>
+
+              </div>
+            </div>
+            <script>
+                function previewAvatar(event) {
+                    var input = event.target;
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            var avatarPreview = document.getElementById('avatarPreview');
+                            avatarPreview.src = e.target.result;
+                            avatarPreview.style.display = 'block';
+                        };
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                document.getElementById('avatarInput').addEventListener('change', previewAvatar);
+
+                document.getElementById('closeButton').addEventListener('click', function() {
+                    var alertDiv = document.getElementById('alertDiv');
+                    alertDiv.style.display = 'none';
+                });
+            </script>
+{% endblock %}

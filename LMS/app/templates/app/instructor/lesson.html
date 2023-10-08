@@ -1,0 +1,122 @@
+{% extends 'app/instructor_base.html' %}
+{% block title %}Instructor Lessons{% endblock %}
+{% block content %}
+<body>
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+       <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <style>
+        /* .container{
+            margin-right: 0px;
+            margin-bottom: 0px;
+            width: 80%;
+          } */
+        div.scroll {
+            background-color: #ffffff;
+            width: 100%;
+            height: 500px;
+            overflow-x: hidden;
+            overflow-y: auto;
+          }
+
+        .filter-data {
+          margin-top: 8px;
+        }
+      </style>
+    </head>
+  
+    <div class="container col-sm">
+      <div class="panel panel-primary" style="border-width: 3px; border-radius: 6px; border-color: #052d71;">
+        <div class="panel-heading" style="background: linear-gradient( #052d71  , #052d71 );">
+          <h6 class="panel-title" style="text-align: center ;font-weight: bold; font-size: 30px; color: #ffffff;">My Lessons</h6>
+        </div>
+        <div class="scroll" style="background-color: #ffffff; width: 100%; height: 500px; overflow-x: hidden; overflow-y: auto;">
+        <div class="card card-body p-4 mt-7 shadow-dark" style="float: right; margin: 10px 5px;">
+          <!-- Search -->
+          
+          <form class="w-100 form-inline" method="get" action="{% url 'instructor_search_lesson'%}">
+            <div class="form-group mx-sm-3 mb-2"  style="width: 40%; float: left;">
+              <input type="text" class="form-control" id="search" placeholder="Search bar" name="query">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" style="background: linear-gradient( #36d1dc   , #5b86e5 );"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+            <br>
+            <!-- <div class="filter-data form-check form-check-inline">
+              <span><b>Status</b>:</span>
+              <input class="form-check-input" type="radio" name="status" id="status" value="Confirmed">
+              <span class="form-check" for="inlineRadio1">Confirmed</span>
+              <input class="form-check-input" type="radio" name="status" id="status" value="Pending">
+              <span class="form-check" for="inlineRadio2">Pending</span>
+              <input class="form-check-input" type="radio" name="status" id="status" value="All" checked>
+              <span class="form-check" for="inlineRadio2">All</span>
+            </div> -->
+            <div class="filter-data">
+              <span><b>Status</b>:</span>
+              <label class="radio-inline">
+                <input class="form-check-input" type="radio" name="status" id="status" value="All" checked>All
+              </label>
+              <label class="radio-inline">
+                <input  class="form-check-input" type="radio" name="status" id="status" value="Confirmed">Confirmed
+              </label>
+              <label class="radio-inline">
+                <input class="form-check-input" type="radio" name="status" id="status" value="Pending" >Pending
+              </label>
+            </div>
+
+            <!-- <div class="filter-data">
+              <span><b>Category</b>:</span>
+              <select name="category" class="form-select" aria-label="Default select example">
+                <option value="All">Select category</option>
+                {% for c in categories %}
+                  <option value={{c.name}}>{{c.name}}</option>
+                {% endfor %}
+              </select>
+            </div> -->
+            
+            <!-- <div class="filter-data">
+              <span><b>Level</b>:</span>
+              <select name="level" class="form-select" aria-label="Default select example">
+                <option value="All">Select level</option>
+                {% for l in levels %}
+                  <option value={{l.name}}>{{l.name}}</option>
+                {% endfor %}
+              </select>
+            </div> -->
+          </form>
+        
+      </div>
+
+        <table class="table table-hover" id="dev-table">
+          <thead>
+            <tr style="font-weight: bold; font-size: 16px;">
+              <th>Name</th>
+              <th>Course</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          {% for a in lessons %}
+            {% for b in a %}
+              <tr>
+                <td><a href="{{b.get_absolute_url}}"><b>{{b.name}}</b></a></td>
+                <td>{{b.course}}</td>
+                {%if b.status == True%}
+                <td><span class="label label-success">Confirmed</span></td>
+                {% else %}
+                <td><span class="label label-warning">Pending</span></td>
+                {% endif %}
+                </tr>
+            {% endfor %}
+          {% endfor %}
+        </table>
+      </div>
+      </div>
+      <a href="{% url 'create_lesson_form' %}" class="btn btn-primary" style="background-color: #052d71;">Create new Lesson <i class="fa-solid fa-plus"></i></a>
+
+      </div>
+  
+    </div>
+  </body>
+{% endblock %}

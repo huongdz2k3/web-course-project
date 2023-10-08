@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+  margin-left: 300px;  
+  text-align:center;
+  margin-top: 70px;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 15px 15px;
+}
+
+/* Remove extra left and right margins, due to padding */
+/* .row {
+  margin-top: 65px;
+  margin-left: 350px;
+  margin-right: 60px;
+  } */
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: white;
+  
+}
+</style>
+</head>
+<body>
+  {% load mathfilters %}
+  <h1 style="margin-left: auto; margin-right: auto; font-weight: bold; color: #34495E; font-size: 50px; margin-top: 0px !important;">Welcome to the Instructor site</h1>
+  <div style="text-align: center;">
+        <button class="btn btn-success"><h2 style="margin-left: auto; margin-right: auto; font-weight: bold; color: #34495E  ;">Today is {{formatted_date}}</h2></button>
+    </div>
+  <div class="container">
+
+  <div class="column">
+    <div class="card" style="border-top: 5px solid rgb(255, 106, 106);">
+      <h3><u><a href="{% url 'instructor-course' %}">Courses</a></u></h3>
+      <p>Total courses: {{courses.count}}</p>
+      <p>Pending courses: {{pendingCourses.count}}</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card" style="border-top: 5px solid rgb(255, 178, 106);">
+      <h3><u><a href="{% url 'instructor-lesson' %}">Lessons</a></u></h3>
+      <p>Total lessons: {{lessonsCount}}</p>
+      <p>Pending lessons: {{plessonsCount}}</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card" style="border-top: 5px solid rgb(0, 175, 0);">
+      <h3><u><a href="{% url 'instructor-video' %}">Video lectures</a></u></h3>
+      <p>Total lectures: {{videosCount}}</p>
+      <p>Pending lectures: {{pVideosCount}}</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card" style="border-top: 5px solid rgb(143, 0, 175);">
+      <h3><u><a href="{% url 'instructor-quiz' %}">Quizzes</a></u></h3>
+      <p>Total quizzes: {{quizzesCount}}</p>
+      <p>Pending quizzes: {{pQuizzesCount}}</p>
+    </div>
+  </div>
+  
+</div>
+{% block content %}
+{% endblock content %}
+</body>
+</html>

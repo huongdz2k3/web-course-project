@@ -1,0 +1,51 @@
+{% extends 'forum_app/forum_base.html' %}
+{% load static %}
+{% block content %}
+<main class="profile-page layout layout--3">
+  <div class="container">
+    <!-- Topics Start -->
+    {% include 'forum_app/forum/topics_component.html' %}
+    <!-- Topics End -->
+
+    <!-- Room List Start -->
+    <div class="roomList">
+      <div class="profile">
+        <div class="profile__avatar">
+          <div class="avatar avatar--large active">
+            <img src="{% static 'assets/img/avatar.svg' %}" />
+          </div>
+        </div>
+        <div class="profile__info">
+          <h3 style="color: black !important">{{user.first_name}} {{user.last_name}}</h3>
+          <p style="color: black !important">@{{user.username}}</p>
+          {% if request.user == user %}
+          <a href="" class="btn btn--pill" style="background-color: #229954">Edit Profile</a>
+          {% endif %}
+        </div>
+        <div class="profile__about">
+          <h3>About</h3>
+          <p>
+            {{user.bio}}
+          </p>
+        </div>
+      </div>
+      {% if user.role == "Instructor" %}
+      <div class="roomList__header">
+        <div>
+          <h2>Study Rooms Hosted by dennis_ivy</a>
+          </h2>
+        </div>
+      </div>
+      {% endif %}
+      {% include 'forum_app/forum/feed_component.html' %}
+
+
+    </div>
+    <!-- Room List End -->
+
+    <!-- Activities Start -->
+    {% include 'forum_app/forum/activity_component.html' %}
+    <!-- Activities End -->
+  </div>
+</main>
+{% endblock content %}

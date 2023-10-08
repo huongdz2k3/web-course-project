@@ -1,0 +1,250 @@
+{% extends 'app/instructor_base.html' %}
+{% block title %}Change Password{% endblock %}
+{% block content %}
+<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <title>Instructor · Profile</title>
+
+    <style>
+        /* div.scroll {
+          background-color: #ffffff;
+          width: 100%;
+          height: 500px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        } */
+
+        .card{
+            padding: 30px 40px;
+            /* margin-top: 5px; */
+            margin-bottom: 60px;
+            border: none !important;
+            box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        
+        
+        .form-control-label{
+            margin-bottom: 0
+        }
+
+        input, textarea, button{
+            padding: 8px 15px;
+            border-radius: 5px !important;
+            margin: 5px 0px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            font-size: 18px !important;
+            font-weight: 300
+        }
+
+        input:focus, textarea:focus{
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #00BCD4;
+            outline-width: 0;
+            font-weight: 400
+        }
+        
+        /* .btn-block{
+            text-transform: uppercase;
+            font-size: 15px !important;
+            font-weight: 400;
+            height: 43px;
+            cursor: pointer
+        }
+        
+        .btn-block:hover{
+            color: #fff !important
+        }
+        
+        button:focus{
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        } */
+
+      </style>
+  </head>
+
+  <div class="container col-sm">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+                <!-- <h3>Request a Demo</h3>
+                <p class="blue-text">Just answer a few questions<br> so that we can personalize the right experience for you.</p> -->
+                <div class="card">
+                    <h2 class="text-center mb-4" style="text-align: center ;font-weight: bold; font-size: 30px;">Your account information</h2>
+                    {% include 'app/components/msg.html' %}
+                    <br>
+                    <form class="form-card" method="post" action="{% url candyLink.instructor_profile_update %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label style="color: #2f2d51" class="form-control-label px-3"><b>First name</b><span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" value="{{instructor.First_Name}}" onblur="validate(1)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label style="color: #2f2d51" class="form-control-label px-3"><b>Last name</b><span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" value="{{instructor.Last_Name}}" onblur="validate(2)"> </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label style="color: #2f2d51" class="form-control-label px-3"> <b>Your gender</b><span class="text-danger"> *</span></label>
+                                <select id="gender" name="gender" class="form-control" onchange="validate(3)" style="font-size: 18px; color: black">
+                                    <option value="male" {% if instructor.gender == 'Male' %}selected{% endif %}>Male</option>
+                                    <option value="female" {% if instructor.gender == 'Female' %}selected{% endif %}>Female</option>
+                                    <option value="other" {% if instructor.gender == 'Other' %}selected{% endif %}>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label style="color: #2f2d51" class="form-control-label px-3"><b>Phone number</b><span class="text-danger"> *</span></label> <input type="text" id="phone" name="phone" value="{{instructor.phone}}" placeholder="" onblur="validate(4)"> </div>
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label style="color: #2f2d51" class="form-control-label px-3"> <b>Current level</b><span class="text-danger"> *</span></label> <input type="text" id="job" name="job" value="{{instructor.level}}" disabled placeholder="" onblur="validate(5)"> </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label style="color: #2f2d51" class="form-control-label px-3"><b>Account Email</b><span class="text-danger"> *</span></label> <input type="text" id="mob" name="mob" value="{{email}}" disabled placeholder="" onblur="validate(6)"> </div>
+                        </div>
+                        
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-lg flex-column d-flex"> <label style="color: #2f2d51"  class="form-control-label px-3"><b>Curriculum Vitae</b> <span class="text-danger"> *</span></label> <input type="file" id="cv" name="cv" value="{{cv}}" accept="*.pdf" placeholder="" onblur="validate(7)"> </div>
+                            <p style="float: left;">Download your current CV file <a href="{{instructor.cv}}"><b>here</b></a></p>
+                        </div>
+
+                        <div class="row">
+                        <div class="col">
+                            <div class="form-group mb-4">
+                                    <label style="color: #2f2d51"><b>Avatar </b></label>
+                                    <input style="color: black" type="file" class="form-control" name="avatar" accept="image/*" id="avatarInput" value="{{current_avatar}}">
+                                    <p style="float: left;">Download your current avatar <a href="{{instructor.avatar.url}}"><b>here</b> </a></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-4">
+                                    <label style="color: #2f2d51"><b>Preview Avatar</b></label>
+                                    <img src="#" alt="Preview" id="avatarPreview" style="display: none; max-width: 200px; max-height: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div class="row justify-content-end">
+                            <div class="form-group col-lg"> <button type="submit" class="btn-block btn-primary">Save profile</button> </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+                function previewAvatar(event) {
+                    var input = event.target;
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            var avatarPreview = document.getElementById('avatarPreview');
+                            avatarPreview.src = e.target.result;
+                            avatarPreview.style.display = 'block';
+                        };
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                document.getElementById('avatarInput').addEventListener('change', previewAvatar);
+
+                document.getElementById('closeButton').addEventListener('click', function() {
+                    var alertDiv = document.getElementById('alertDiv');
+                    alertDiv.style.display = 'none';
+                });
+            </script>
+{% endblock %}
+<!-- <script>
+    function validate(val) {
+    v1 = document.getElementById("fname");
+    v2 = document.getElementById("lname");
+    v3 = document.getElementById("email");
+    v4 = document.getElementById("mob");
+    v5 = document.getElementById("job");
+    v6 = document.getElementById("ans");
+
+    flag1 = true;
+    flag2 = true;
+    flag3 = true;
+    flag4 = true;
+    flag5 = true;
+    flag6 = true;
+
+    if(val>=1 || val==0) {
+        if(v1.value == "") {
+            v1.style.borderColor = "red";
+            flag1 = false;
+        }
+        else {
+            v1.style.borderColor = "green";
+            flag1 = true;
+        }
+    }
+
+    if(val>=2 || val==0) {
+        if(v2.value == "") {
+            v2.style.borderColor = "red";
+            flag2 = false;
+        }
+        else {
+            v2.style.borderColor = "green";
+            flag2 = true;
+        }
+    }
+    if(val>=3 || val==0) {
+        if(v3.value == "") {
+            v3.style.borderColor = "red";
+            flag3 = false;
+        }
+        else {
+            v3.style.borderColor = "green";
+            flag3 = true;
+        }
+    }
+    if(val>=4 || val==0) {
+        if(v4.value == "") {
+            v4.style.borderColor = "red";
+            flag4 = false;
+        }
+        else {
+            v4.style.borderColor = "green";
+            flag4 = true;
+        }
+    }
+    if(val>=5 || val==0) {
+        if(v5.value == "") {
+            v5.style.borderColor = "red";
+            flag5 = false;
+        }
+        else {
+            v5.style.borderColor = "green";
+            flag5 = true;
+        }
+    }
+    if(val>=6 || val==0) {
+        if(v6.value == "") {
+            v6.style.borderColor = "red";
+            flag6 = false;
+        }
+        else {
+            v6.style.borderColor = "green";
+            flag6 = true;
+        }
+    }
+
+    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
+
+    return flag;
+}
+</script> -->

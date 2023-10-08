@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Please click on the link below to confirm your registration:
+
+{{ protocol }}://{{ domain }}{% url 'save_draft_instructor_account' uidb64=uid token=token %}
+{% endautoescape %}

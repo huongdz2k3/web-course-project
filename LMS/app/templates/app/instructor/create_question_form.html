@@ -1,0 +1,131 @@
+{% extends 'app/instructor_base.html' %}
+{% block title %}Instructor Create Lessons{% endblock %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <title>Instructor · Question</title>
+</head>
+
+
+  <body>
+
+  <form method="POST" style="color: #052d71 !important;">
+      {% csrf_token %}
+      <div class="container register-form" style="align-items: center;">
+        <div class="form">
+          <div class="note">
+              <p style="font-size: 30px;">Fill in the details of the lesson</p>
+          </div>
+          <div class="form-content" style="background-color: #fff; border: 2px solid #000000">
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="form-group">
+                    <h5><b>Quiz</b></h5>
+                    {% render_field createQuestionForm.quiz class="form-control"%}
+                  </div>
+
+                <div class="form-group">
+                    <h5><b>Question title</b></h5>
+                  {% render_field createQuestionForm.text class="form-control" %}
+                </div>
+
+                  <div class="form-group">
+                    <h5><b>Question point</b></h5>
+                  {% render_field createQuestionForm.point class="form-control" %}
+                </div>
+
+                  <h3>Question's answers</h3>
+                    {{ answer_formset.management_form }}
+                    {% for form in answer_formset.forms %}
+
+                      <div class="form-group">
+                        <h5><b>Answer</b></h5>
+                            <table>
+                              <tr>
+                                <td style="width: 90%; padding-right: 10px;">
+                                  {{ form.text|add_class:"form-control" }}
+                                </td>
+                                <td style="width: 10%;">
+                                  <b>Correct</b>: {{ form.correct }}
+                                </td>
+                              </tr>
+                            </table>
+                        </div>
+                    {% endfor %}
+              </div>
+
+            </div>
+            <button type="submit" class="btnSubmit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+  <style>
+
+     div.scroll {
+          background-color: #ffffff;
+          width: 100%;
+          height: 350px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+
+    .register-form{
+      padding-left: 0px;
+      padding-right: 0px;
+      border-radius: 20px;
+    }
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: #052d71;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #052d71;
+      color: #fff;
+      width: 100%;
+    }
+
+    .form-group{
+        padding-bottom:3px;
+    }
+  </style>
+</body>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% load static %}
+<header class="header header--loggedIn">
+    <div class="container">
+        <a href="{% url 'forum_home' %}" class="header__logo">
+            <img src="{% static 'assets/img/logo.svg' %}" />
+            <h1>StudyBuddy</h1>
+        </a>
+        <form class="header__search" method="GET" action="{% url 'forum_home' %}">
+            <label>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <title>search</title>
+                    <path
+                        d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z">
+                    </path>
+                </svg>
+                <input name="q" placeholder="Search for posts" />
+            </label>
+        </form>
+        <nav class="header__menu">
+
+
+            <!-- Logged In -->
+            {% if request.user.is_authenticated %}
+            <div class="header__user">
+                <a href="{% url 'user-profile' request.user.id %}">
+                    <div class="avatar avatar--medium active">
+                        <img src="{% static 'assets/img/avatar.svg' %}" />
+                    </div>
+                    <p>{{request.user.first_name}} {{request.user.last_name}}<span style="color: white;">@{{request.user.username}}</span></p>
+                </a>
+                <button  class="dropdown-button">
+                    <svg style="fill: white !important" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                        <title>chevron-down</title>
+                        <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+                    </svg>
+                </button>
+            </div>
+            {% else %}
+
+            <!-- Not Logged In -->
+            <a href="{% url 'login' %}">
+                <img src="{% static 'assets/img/avatar.svg' %}" />
+                <p>Login</p>
+            </a>
+            {% endif %}
+
+            <div class="dropdown-menu">
+                {% if role == "Learner" %}
+                <a href="{% url 'home' %}" class="dropdown-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8V454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5V83.8c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5z"/></svg>
+                    Marketplace</a>
+                {% else %}
+                <a href="{% url 'instructor-dashboard' %}" class="dropdown-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/></svg>
+                    Dashboard</a>
+                {% endif %}
+                <a href="{% url 'logout' %}" class="dropdown-link"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        width="32" height="32" viewBox="0 0 32 32">
+                        <title>sign-out</title>
+                        <path
+                            d="M3 0h22c0.553 0 1 0 1 0.553l-0 3.447h-2v-2h-20v28h20v-2h2l0 3.447c0 0.553-0.447 0.553-1 0.553h-22c-0.553 0-1-0.447-1-1v-30c0-0.553 0.447-1 1-1z">
+                        </path>
+                        <path
+                            d="M21.879 21.293l1.414 1.414 6.707-6.707-6.707-6.707-1.414 1.414 4.293 4.293h-14.172v2h14.172l-4.293 4.293z">
+                        </path>
+                    </svg>
+                    Logout</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+
+<!-- {% if request.user.is_authenticated %}
+<p>Hello {{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %} -->

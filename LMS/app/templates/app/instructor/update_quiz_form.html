@@ -1,0 +1,185 @@
+{% extends 'app/instructor_base.html' %}
+{% block title %}Instructor Create Courses{% endblock %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<body>  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <title>Instructor · Course</title>
+</head>
+
+   
+  <body>
+
+    <!-- <div style=" background: linear-gradient( #ffdde1, #ee9ca7 );"> -->
+  
+    <!-- <div class="navbar">
+      <a href=""> <p style="font-size: 38px;">Create new course</p></a> 
+      <a class="btn btn-primary menu" href="{% url 'instructor-course' %}" style="background-color: #052d71 !important; color:#fff;">Back</a>
+  </div> -->
+    <div style="text-align: center;">
+        <button class="btn btn-primary" style="margin-bottom: 5px; border-radius: 1.5rem; width: 50%; background-color: #052d71 !important;">
+            <a href="{% url 'instructor-quiz' %}" style="display: block; text-decoration: none; color: white; height: 100%; width: 100%;">Back</a>
+        </button>
+    </div>
+    <form method="POST" style="color: #052d71 !important;">
+      {% csrf_token %}
+      <div class="container register-form" style="align-items: center;">
+        <div class="form">
+          <div class="note">
+              <p style="font-size: 30px;">Fill in the details of the course</p>
+          </div>
+          <div class="form-content" style="background-color: #fff; border: 2px solid #000000">
+            <div class="scroll" style="height: 500px">
+            <div class="row">
+              <div class="col-md-12">
+                <!-- <div class="form-group">Featured image
+                  {% render_field createCourseForm.featured_image class="form-control" placeholder="Featured image" %}
+                </div> -->
+
+                <div class="form-group">
+                  <h5><b>Course</b></h5>
+                  {% render_field updateQuizForm.course class="form-control" placeholder="Course" %}
+                </div>
+
+
+                  <div class="form-group">
+                  <h5><b>Lesson</b></h5>
+                  {% render_field updateQuizForm.lesson class="form-control" placeholder="Lesson" %}
+                </div>
+
+                <div class="form-group">
+                  <h5><b>Topic</b></h5>
+                      <textarea class="form-control" type="text" id="topic" name="topic" >{{topic}}</textarea>
+<!--                  {% render_field updateCourseForm.description class="form-control" placeholder="Description" %}-->
+                </div>
+
+                  <div class="form-group">
+                  <h5><b>Number of question</b></h5>
+                      <textarea class="form-control" type="text" id="number_of_questions" name="number_of_questions" >{{number_of_questions}}</textarea>
+<!--                  {% render_field updateCourseForm.description class="form-control" placeholder="Description" %}-->
+                </div>
+
+                  <div class="form-group">
+                    <h5><b>Time duration</b></h5>
+                  <textarea class="form-control" type="text" id="time_duration" name="time_duration" >{{time_duration}}</textarea>
+                </div>
+
+                  <div class="form-group">
+                  <h5><b>Passing score</b></h5>
+                      <textarea class="form-control" type="text" id="require_passing_score" name="require_passing_score" >{{require_passing_score}}</textarea>
+<!--                  {% render_field updateCourseForm.description class="form-control" placeholder="Description" %}-->
+                </div>
+
+                  <div class="form-group">
+                  <h5><b>Total attempt</b></h5>
+                      <textarea class="form-control" type="text" id="total_attempts" name="total_attempts" >{{total_attempts}}</textarea>
+<!--                  {% render_field updateCourseForm.description class="form-control" placeholder="Description" %}-->
+                </div>
+
+                  <div class="form-group">
+                   <h5><b>Difficulty level</b></h5>
+                    {% if difficulty_level == "Easy" %}
+                       <select class="form-control" name="difficulty_level">
+                          <option selected value="Easy">Easy</option>
+                          <option value="Medium">Medium</option>
+                           <option value="Hard">Hard</option>
+                       </select>
+                    {% elif  difficulty_level == "Medium" %}
+                        <select class="form-control" name="difficulty_level">
+                          <option  value="Easy">Easy</option>
+                          <option selected value="Medium">Medium</option>
+                           <option value="Hard">Hard</option>
+                       </select>
+                    {% else %}
+                      <select class="form-control" name="difficulty_level">
+                          <option  value="Easy">Easy</option>
+                          <option value="Medium">Medium</option>
+                           <option selected value="Hard">Hard</option>
+                       </select>
+                      {% endif %}
+                </div>
+
+              </div>
+
+            </div>
+            </div>
+             <br>
+
+            <button type="submit" class="btnSubmit">Submit</button>
+<!--              <a class="btn btn-primary" href="{% url 'instructor-lesson' %}" role="button">Back</a>-->
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </body>
+  <style>
+
+     div.scroll {
+          background-color: #ffffff;
+          width: 100%;
+          height: 350px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+
+    .register-form{
+      padding-left: 0px;
+      padding-right: 0px;
+      border-radius: 20px;
+    }
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: #052d71;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #052d71;
+      color: #fff;
+      width: 100%;
+    }
+
+    /* .menu {
+      top: 50px;
+    } */
+
+    .form-group{
+        padding-bottom:3px;
+    }
+  </style>
+</body>
+
+{% endblock %}

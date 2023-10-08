@@ -1,0 +1,147 @@
+{% extends 'app/instructor_base.html' %}
+{% block title %}Instructor Create Quizzes{% endblock %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <title>Instructor · Course</title>
+</head>
+
+   
+  <body>
+    <form method="POST" style="color: #052d71 !important;">
+      {% csrf_token %}
+      <div class="container register-form" style="align-items: center;">
+        <div class="form">
+          <div class="note">
+              <p style="font-size: 30px;">Fill in the details of the quizz</p>
+          </div>
+          <div class="form-content" style="background-color: #fff; border: 2px solid #000000">
+              <div class="scroll" style="height: 520px">
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="form-group">
+                    <h5><b>Course</b></h5>
+                  {% render_field createQuizForm.course class="form-control" placeholder="course" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Lesson</b></h5>
+                  {% render_field createQuizForm.lesson class="form-control" placeholder="lesson" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Topic</b></h5>
+                    {% render_field createQuizForm.topic class="form-control" placeholder="topic" %}
+                  </div>
+
+                <div class="form-group">
+                    <h5><b>Slug</b></h5>
+                  {% render_field createQuizForm.slug class="form-control" placeholder="slug" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Number of questions</b></h5>
+                  {% render_field createQuizForm.number_of_questions class="form-control" placeholder="number of questions" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Time duration</b></h5>
+                  {% render_field createQuizForm.time_duration class="form-control" placeholder="time duration" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Require passing score</b></h5>
+                  {% render_field createQuizForm.require_passing_score class="form-control" placeholder="require passing score" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Total attempts</b></h5>
+                  {% render_field createQuizForm.total_attempts class="form-control" placeholder="total attemps" %}
+                </div>
+
+                <div class="form-group">
+                    <h5><b>Difficulty level</b></h5>
+                  {% render_field createQuizForm.difficulty_level class="form-control" placeholder="difficulty level" %}
+                </div>
+
+              </div>
+            </div>
+            </div>
+            <button type="submit" class="btnSubmit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+  <style>
+
+     div.scroll {
+          background-color: #ffffff;
+          width: 100%;
+          height: 350px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+
+    .register-form{
+      padding-left: 0px;
+      padding-right: 0px;
+      border-radius: 20px;
+    }
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: #052d71;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #052d71;
+      color: #fff;
+      width: 100%;
+    }
+
+    /* .menu {
+      top: 50px;
+    } */
+
+    .form-group{
+        padding-bottom:3px;
+    }
+  </style>
+</body>
+
+{% endblock %}

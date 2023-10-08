@@ -1,0 +1,249 @@
+{% extends 'app/base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none; padding-bottom: 0 !important">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Register</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center" >
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Register
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- Img -->
+        <img class="d-none img-fluid" src="...html" alt="...">
+    </header>
+
+
+    <!-- REGISTER
+    ================================================== -->
+    <div class="container mb-11">
+        <div class="row gx-">
+            <div class="col-md-7 col-xl-6 mx-auto">
+                {% include 'app/components/msg.html' %}
+                <button style="margin-bottom: 10px" data-bs-toggle="collapse" href="#collapseLearnerSignup" role="button" aria-expanded="false" aria-controls="collapseSignup" class="btn btn-block btn-primary" type="submit">
+                        Sign up for Learner account
+                </button>
+                <br>
+                <button style="margin-bottom: 10px" data-bs-toggle="collapse" href="#collapseInstructorSignup" role="button" aria-expanded="false" aria-controls="collapseSignup" class="btn btn-block btn-primary" type="submit">
+                        Sign up for Instructor account
+                </button>
+
+                <p class="mb-0 font-size-sm text-center">
+                    Already have an account? <a class="text-underline" href="{% url 'login' %}">Log In</a>
+                </p>
+
+                <!-- Learner Sign Up Form -->
+                <div class="collapse" id="collapseLearnerSignup" data-bs-parent="#accountModal">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Sign Up and Start Learning!</h2>
+                        <button type="button" class="close text-primary" data-bs-dismiss="modal" aria-label="Close" >
+                            <!-- Icon -->
+                            <a class="text-underline" data-bs-toggle="collapse" href="#collapseLearnerSignup" role="button" aria-expanded="false" aria-controls="collapseSignup">
+                                <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.142135 2.00015L1.55635 0.585938L15.6985 14.7281L14.2843 16.1423L0.142135 2.00015Z" fill="currentColor"></path>
+                                    <path d="M14.1421 1.0001L15.5563 2.41431L1.41421 16.5564L0 15.1422L14.1421 1.0001Z" fill="currentColor"></path>
+                                </svg>
+                            </a>
+                        </button>
+                    </div>
+                
+                    <div class="modal-body">
+                        <!-- Form Signup -->
+                        <form class="mb-5" method="post" action="{% url candyLink.learner_register %}">
+                            {% csrf_token %}
+
+                             <!-- First Name -->
+                             <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    First Name
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupFirstName" placeholder="John" name="First_Name" required>
+                            </div>                    
+        
+                            <!-- Last Name -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    Last Name
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupLastName" placeholder="John" name="Last_Name" required>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="form-group mb-5">
+                            <label for="modalSignupUsername1">
+                                Gender
+                            </label>
+                            <select class="form-select" aria-label="Default select example" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+
+                             <!-- Username -->
+                             <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    Username
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupUsername1" placeholder="John" name="username" required>
+                            </div>
+        
+                            <!-- Email -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupEmail1">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" id="modalSignupEmail1" placeholder="johndoe@creativelayers.com" name="email" required>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password1" required>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Re-Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password2" required>
+                            </div>
+                            <!-- Submit -->
+                            <button class="btn btn-block btn-primary" type="submit">
+                                SIGN UP
+                            </button>
+        
+                        </form>
+
+                        <!-- Text -->
+                        <p class="mb-0 font-size-sm text-center">
+                            Already have an account? <a class="text-underline" data-bs-toggle="collapse" href="#collapseSignin" role="button" aria-expanded="true" aria-controls="collapseSignin">Log In</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Instructor Sign Up Form -->
+                <div class="collapse" id="collapseInstructorSignup" data-bs-parent="#accountModal">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Join and share knowledge with us</h2>
+                        <button type="button" class="close text-primary" data-bs-dismiss="modal" aria-label="Close" >
+                            <!-- Icon -->
+                            <a class="text-underline" data-bs-toggle="collapse" href="#collapseInstructorSignup" role="button" aria-expanded="false" aria-controls="collapseSignup">
+                                <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.142135 2.00015L1.55635 0.585938L15.6985 14.7281L14.2843 16.1423L0.142135 2.00015Z" fill="currentColor"></path>
+                                    <path d="M14.1421 1.0001L15.5563 2.41431L1.41421 16.5564L0 15.1422L14.1421 1.0001Z" fill="currentColor"></path>
+                                </svg>
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Form Signup -->
+                        {% include 'app/components/msg.html' %}
+                        <form class="mb-5" method="post" action="{% url candyLink.instructor_register %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- First Name -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    First Name
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupFirstName" placeholder="John" name="First_Name" required>
+                            </div>                    
+        
+                            <!-- Last Name -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    Last Name
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupLastName" placeholder="John" name="Last_Name" required>
+                            </div>
+                            
+                            <!-- Gender -->
+                            <div class="form-group mb-5">
+                            <label for="modalSignupUsername1">
+                                Gender
+                            </label>
+                            <select class="form-select" aria-label="Default select example" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+
+                            <!-- Username -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupUsername1">
+                                    Username
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupUsername1" placeholder="John" name="username" required>
+                            </div>
+        
+                            <!-- Email -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupEmail1">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" id="modalSignupEmail1" placeholder="johndoe@creativelayers.com" name="email" required>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupEmail1">
+                                    Phone
+                                </label>
+                                <input type="text" class="form-control" id="modalSignupEmail1" placeholder="0912999888" name="phone" required>
+                            </div>
+        
+                            <!-- Password -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password1" required>
+                            </div>
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Re-Password
+                                </label>
+                                <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name="password2" required>
+                            </div>
+                            
+                            <!-- Curriculum vitae -->
+                            <div class="form-group mb-5">
+                                <label for="modalSignupPassword3">
+                                    Curriculum vitae
+                                </label>
+                                <input type="file" class="form-control" id="modalSignupCV" placeholder="Upload your CV here" name="cv" required>
+                            </div>
+                            <!-- Submit -->
+                            <button class="btn btn-block btn-primary" type="submit">
+                                SIGN UP
+                            </button>
+        
+                        </form>
+
+                        <!-- Text -->
+                        <p class="mb-0 font-size-sm text-center">
+                            Already have an account? <a class="text-underline" data-bs-toggle="collapse" href="#collapseSignin" role="button" aria-expanded="true" aria-controls="collapseSignin">Log In</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

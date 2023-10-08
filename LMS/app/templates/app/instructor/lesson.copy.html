@@ -1,0 +1,87 @@
+{% extends 'app/instructor/instructor_base.html' %}
+<body>
+  {% block content_dashboard %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Instructor · Home</title>
+
+    <style>
+      .container{
+          margin-right: 0px;
+          margin-bottom: 0px;
+          width: 80%;
+        }
+      div.scroll {
+          background-color: #ffffff;
+          width: 100%;
+          height: 500px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+    </style>
+  </head>
+
+  <div class="container col-sm">
+    <div class="panel panel-primary" style="border-width: 3px; border-radius: 6px;">
+      <div class="panel-heading">
+        <h6 class="panel-title" style="text-align: center ;font-weight: bold; font-size: 30px;">My Lessons</h6>
+      </div>
+
+      <div class="scroll">
+        <div class="card card-body p-4 mt-7 shadow-dark" style="float: right; margin: 10px 5px;">
+          <!-- Search -->
+          <form class="w-100 form-inline" method="get" action="{% url 'instructor_search_lesson'%}">
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="text" class="form-control" id="inputPassword2" placeholder="Search bar" name="query">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+            <!-- <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="searchType" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="searchType" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="searchType" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio3">3</label>
+              </div>
+            </div> -->
+          </form>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr style="font-weight: bold; font-size: 16px;">
+            <th>Name</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        {% for a in lessons %}
+          {% for b in a %}
+            <tr>
+              <td><a href="">{{b.name}}</a></td>
+              <td>{{b.course}}</td>
+              {%if b.status == True%}
+              <td><span class="label label-primary">Confirmed</span></td>
+              {% else %}
+              <td><span class="label label-success">Pending</span></td>
+              {% endif %}
+              </tr>
+          {% endfor %}
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+    <a href="{% url 'create_lesson_form' %}" class="btn btn-primary">Create new Lesson <i class="fa-solid fa-plus"></i></a>
+
+  </div>
+  {% endblock content_dashboard %}
+</body>

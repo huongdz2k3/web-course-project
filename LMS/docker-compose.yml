@@ -1,0 +1,12 @@
+version: '3.11'
+
+services:
+  django-LMS:
+    image: app:django
+    build: .
+    volumes:
+      - .:/LMS
+    ports:
+      - 8000:8000
+    container_name: graduation_project
+    command: python manage.py runserver 0.0.0.0:8000
