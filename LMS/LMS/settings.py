@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -107,18 +107,11 @@ WSGI_APPLICATION = 'LMS.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-   #  'default': {
-   #     'ENGINE': 'django.db.backends.postgresql',
-   #     'NAME': 'postgresDB',
-   #     'USER': 'root',
-   #     'PASSWORD': '123',
-   #     'HOST': 'localhost',
-   #     'PORT': '5432',
-   # }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+    'default': dj_database_url.parse("postgres://user:74Q0L9OeLS4k5yepwO6FWtVoBUPP43zu@dpg-ckhu1h4ldqrs739idf90-a.singapore-postgres.render.com/postgresdb_93ds")
 }
 
 
